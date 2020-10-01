@@ -49,7 +49,7 @@ class FileSelection extends Component {
         headers: {'Content-Type': 'image/*',},
         body: this.state.file,
       })
-      console.log('Response', uploadResponse)
+      console.log('S3 Response', uploadResponse)
       
       //Add new Item to DynamoDB, API call below fails due to CORS issues (Both PUT and)
       const databaseResponse = await fetch('https://r6b7n8z821.execute-api.us-east-2.amazonaws.com/default/putDynamoItem', {
@@ -58,7 +58,7 @@ class FileSelection extends Component {
         headers: {'Content-Type': 'application/json',},
         body: this.state.fileMeta,
       })
-      console.log('Response', databaseResponse)
+      console.log('DB Response', databaseResponse)
   }
 
   
