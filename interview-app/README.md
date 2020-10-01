@@ -1,6 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installation
+
+Clone this repo to your local drive, and use the package manager npm to install necessary packages
+
+```
+npm i
+```
+
+## Usage
 
 In the project directory, you can run:
 
@@ -12,57 +20,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+Once the app is running, simply select an image to upload. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+With an image is selected, a presigned URL is obtained from S3, and pressing the Upload button will both upload the 
+image and persist relevant metadata to a DynamoDB database. 
 
-### `npm run build`
+## Issues
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I could not seem to get CORS to cooperate, and as a result had a lot of difficulty passing information to Lambda functions using an HTTP POST or PUT request.
+I could have made the application do everything (from requesting presigned URL to uploading the image and updating dynamo) as soon as the file was selected, but splitting the selection and upload into two different actions seemed like the correct route. Unfortunately, this means I was unable to pass any metadata to the lambda function for updating the database. As a result, the "ID on Cloud" remains at img001.jpg because the database is never updated. Previously I had the database updating with dummy info on file selection so the ID would increment, but I left the code in a form that it WOULD have worked, had I been able to pass information to the lambda. test_event.js in the putDynamoItem directory represents what the body of a PUT/POST request to that lambda would look like. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
