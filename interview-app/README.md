@@ -20,8 +20,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-Once the app is running, simply select an image to upload. Once an image is selected,
-a presigned URL is obtained from S3, and pressing the Upload button will upload the 
+Once the app is running, simply select an image to upload. 
+
+With an image is selected, a presigned URL is obtained from S3, and pressing the Upload button will both upload the 
 image and persist relevant metadata to a DynamoDB database. 
 
 
