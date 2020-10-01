@@ -22,7 +22,7 @@ You will also see any lint errors in the console.
 
 Once the app is running, simply select an image to upload. Once an image is selected,
 a presigned URL is obtained from S3, and pressing the Upload button will upload the 
-image and store relevant metadata in a DynamoDB database. 
+image and persist relevant metadata to a DynamoDB database. 
 
 
 ## License
