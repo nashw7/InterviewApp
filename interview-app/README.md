@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 
-Clone this repo to your local drive, and use the package manager npm to install necessary packages
+Clone this repo to your local drive, and use the package manager npm to install necessary packages from inside interview-app.
 
 ```
 npm i
