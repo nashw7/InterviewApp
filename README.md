@@ -10,7 +10,8 @@ By selecting an image using the file browser, a presigned URL for upload is requ
 
 When upload is pressed, the image is sent to the S3 bucket using the requested presigned URL, and a new entry is created in the database representing this uploaded image. 
 
-##Navigate to interview-app for instructions on running the app.
+
+## Navigate to interview-app for insturctions on running the app.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
